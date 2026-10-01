@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 | Portfolio</title>
+    <style>
+        /* 基礎設定與變數 */
+        :root {
+            --bg-color: #fdfdfd; /* 帶有微暖色調的白色 */
+            --text-primary: #333333;
+            --text-secondary: #777777;
+            --accent-color: #a89f91; /* 柔和的大地色系作為點綴 */
+            --font-main: 'Noto Sans TC', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            --font-serif: 'Noto Serif TC', 'Hiragino Mincho ProN', 'MS PMincho', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        /* 導覽列 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(253, 253, 253, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--text-primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        /* 首頁主視覺區塊 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s 0.7s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--text-primary);
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s 0.9s forwards;
+        }
+
+        .btn:hover {
+            background: var(--text-primary);
+            color: var(--bg-color);
+        }
+
+        /* 裝飾性元素 */
+        .decoration-line {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            width: 1px;
+            height: 100px;
+            background-color: var(--accent-color);
+            opacity: 0;
+            animation: expandLine 1s 1.2s forwards;
+        }
+        
+        .decoration-text {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            writing-mode: vertical-rl;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.2em;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s forwards;
+        }
+
+        /* 動畫 */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes expandLine {
+            from { height: 0; }
+            to { height: 100px; opacity: 1; }
+        }
+
+        /* 響應式 */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 5%;
+            }
+            .hero {
+                padding: 0 5%;
+                align-items: center;
+                text-align: center;
+            }
+            .decoration-line, .decoration-text {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Google Fonts 引入字體以確保日系感 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">Y. DESIGN</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Less, but better.<br>簡約，而不簡單。</h1>
+            <p>專注於介面設計與品牌識別，致力於將複雜的資訊轉化為優雅的視覺體驗，創造具備機能美與溫度的設計。</p>
+            <a href="portfolio.html" class="btn">探索作品集</a>
+            
+            <div class="decoration-line"></div>
+            <div class="decoration-text">CREATE WITH PURPOSE.</div>
+        </section>
+    </main>
+</body>
+</html>

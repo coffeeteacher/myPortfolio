@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我 | About</title>
+    <style>
+        :root {
+            --bg-color: #fdfdfd;
+            --text-primary: #333333;
+            --text-secondary: #777777;
+            --border-color: #eaeaea;
+            --font-main: 'Noto Sans TC', sans-serif;
+            --font-serif: 'Noto Serif TC', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding-top: 80px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* 導覽列 (共用) */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(253, 253, 253, 0.95); border-bottom: 1px solid var(--border-color); z-index: 100;
+        }
+        .logo { font-family: var(--font-serif); font-size: 1.2rem; letter-spacing: 0.1em; }
+        nav ul { list-style: none; display: flex; gap: 2rem; }
+        nav a { font-size: 0.9rem; letter-spacing: 0.05em; position: relative; }
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 1px;
+            bottom: -4px; left: 0; background-color: var(--text-primary); transition: width 0.3s ease;
+        }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+
+        /* 關於我頁面佈局 */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        /* 圖片區塊 */
+        .about-image {
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            filter: grayscale(20%); /* 微微去色增加質感 */
+        }
+        
+        /* 裝飾線 */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 1px;
+            background-color: var(--text-primary);
+        }
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 1px;
+            height: 100px;
+            background-color: var(--text-primary);
+        }
+
+        /* 文字內容區塊 */
+        .about-content h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* 技能/經歷列表 */
+        .info-list {
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .info-label {
+            width: 120px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+        }
+        
+        .info-value {
+            flex: 1;
+            color: var(--text-secondary);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: var(--text-primary);
+            color: var(--bg-color);
+            border: 1px solid var(--text-primary);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        /* 響應式 */
+        @media (max-width: 900px) {
+            .about-container {
+                grid-template-columns: 1fr; /* 改為上下排列 */
+                gap: 4rem;
+                padding-top: 4rem;
+            }
+            .about-image::before, .about-image::after {
+                display: none; /* 手機版隱藏裝飾線 */
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">Y. DESIGN</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-container">
+            <div class="about-image">
+                <!-- 佔位個人照片，建議使用黑白或低飽和度照片更符合日系感 -->
+                <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?auto=format&fit=crop&q=80&w=800" alt="設計師肖像">
+            </div>
+            
+            <div class="about-content">
+                <h1>相信設計的力量，<br>能讓生活變得更美好。</h1>
+                <p>你好，我是 Y.，一位駐點於台北的自由設計師。專注於介面設計（UI/UX）、品牌識別以及網頁設計。我喜歡將複雜的事物化繁為簡，追求乾淨、有邏輯且具備溫度的設計風格。</p>
+                <p>我相信好的設計不僅僅是視覺上的美觀，更是為了解決問題、傳遞訊息，並在使用者與產品之間建立起無形的橋樑。在每一個專案中，我都致力於探索最純粹的表達方式。</p>
+                
+                <div class="info-list">
+                    <div class="info-item">
+                        <div class="info-label">SERVICES</div>
+                        <div class="info-value">UI/UX Design, Web Design, Branding, Editorial</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">EXPERIENCE</div>
+                        <div class="info-value">
+                            2022 - Present | Freelance Designer<br>
+                            2019 - 2022 | Senior Designer at Design Agency
+                        </div>
+                    </div>
+                </div>
+
+                <a href="mailto:hello@example.com" class="contact-btn">與我聯繫 / GET IN TOUCH</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
